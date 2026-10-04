@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>科技融合多元创意｜华为创意广告分析</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{--red:#cf0a2c;--ink:#111317;--paper:#f4f3ef;--muted:#6d7077;--line:#d9d8d3;--card:#fff;--dark:#0d0e10}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
+a{color:inherit;text-decoration:none}.wrap{width:min(1180px,calc(100% - 48px));margin:auto}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--red);width:0;z-index:100}
+nav{position:fixed;z-index:90;top:18px;left:50%;transform:translateX(-50%);width:min(1120px,calc(100% - 36px));height:62px;border:1px solid #ffffff26;border-radius:999px;background:#111317d9;color:white;backdrop-filter:blur(16px);display:flex;align-items:center;padding:0 20px;box-shadow:0 14px 35px #0002}
+.brand{font-weight:800;letter-spacing:-.03em}.brand b{color:#ff2448}.navlinks{margin-left:auto;display:flex;gap:24px;font-size:12px;letter-spacing:.06em}.navlinks a{opacity:.68;transition:.2s}.navlinks a:hover{opacity:1;color:#ff4563}
+.hero{min-height:100vh;background:var(--dark);color:white;position:relative;overflow:hidden;display:flex;align-items:end;padding:140px 0 72px}
+.hero:before{content:"";position:absolute;width:760px;height:760px;border:1px solid #ffffff12;border-radius:50%;right:-170px;top:-230px;box-shadow:0 0 0 90px #ffffff05,0 0 0 180px #ffffff03}
+.hero:after{content:"";position:absolute;inset:auto 0 0;height:46%;background:radial-gradient(ellipse at 70% 100%,#cf0a2c35,transparent 55%)}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.2fr .8fr;gap:80px;align-items:end}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#a6a8ad}.hero h1{font-size:clamp(56px,8vw,112px);line-height:.9;letter-spacing:-.075em;margin:22px 0 28px;max-width:900px}.hero h1 span{color:#ff2448}.hero p{font-size:17px;line-height:1.85;color:#b6b8bc;max-width:680px}.hero-side{border-left:1px solid #ffffff20;padding-left:30px}.hero-side strong{display:block;font-size:72px;line-height:1;letter-spacing:-.06em}.hero-side small{color:#96999e;line-height:1.7}
+.scrollcue{margin-top:45px;font-size:11px;letter-spacing:.15em;color:#777}
+section{padding:110px 0}.section-head{display:grid;grid-template-columns:.7fr 1.3fr;gap:50px;margin-bottom:48px}.section-head h2{font-size:clamp(42px,5.4vw,76px);line-height:.94;letter-spacing:-.055em;margin:8px 0}.section-head p{align-self:end;color:var(--muted);line-height:1.8;max-width:660px}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric{background:white;border:1px solid var(--line);border-radius:22px;padding:25px;min-height:180px;position:relative;overflow:hidden;transition:.3s}.metric:hover{transform:translateY(-5px);box-shadow:0 20px 45px #1111}.metric .num{font-size:48px;font-weight:800;letter-spacing:-.055em}.metric .label{margin-top:10px;color:var(--muted);font-size:13px;line-height:1.5}.metric:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;background:#cf0a2c10;right:-25px;bottom:-30px}
+.theory{background:#17191d;color:white}.theory-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:#ffffff1b;border:1px solid #ffffff1b;border-radius:24px;overflow:hidden}.theory-card{background:#17191d;padding:28px 22px;min-height:280px;transition:.3s}.theory-card:hover{background:#202329}.theory-card b{font-size:42px;color:#ffffff12}.theory-card h3{font-size:19px;margin-top:75px}.theory-card p{font-size:13px;color:#9fa2a7;line-height:1.7}
+.data-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.chart-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;min-height:410px}.chart-card.wide{grid-column:1/-1}.chart-card h3{font-size:18px;margin:0 0 5px}.chart-card p{font-size:12px;color:var(--muted);margin:0 0 20px}.chart-wrap{height:300px}
+.insight{margin-top:14px;background:#111317;color:white;border-radius:24px;padding:35px;display:grid;grid-template-columns:160px 1fr;gap:35px}.insight b{font-size:64px;color:#ff2448;letter-spacing:-.06em}.insight p{font-size:17px;line-height:1.8;color:#c4c6ca;margin:0}
+.cases{background:#e9e8e3}.case-list{display:grid;gap:12px}.case{background:white;border:1px solid var(--line);border-radius:24px;padding:30px;display:grid;grid-template-columns:120px 1.2fr .8fr;gap:35px;align-items:start;transition:.35s;cursor:pointer}.case:hover{transform:translateX(7px);box-shadow:0 18px 40px #1111}.case-no{font-size:58px;font-weight:800;color:#e1e0dc}.case h3{font-size:28px;letter-spacing:-.03em;margin:0 0 12px}.case p{color:var(--muted);line-height:1.75;margin:0}.case-stats{border-left:1px solid var(--line);padding-left:28px}.views{font-size:38px;font-weight:800;letter-spacing:-.05em;color:var(--red)}.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}.tag{font-size:10px;border:1px solid var(--line);border-radius:999px;padding:7px 10px}
+.timeline{display:grid;grid-template-columns:repeat(12,1fr);gap:5px;align-items:end;height:270px;border-bottom:1px solid #bbb;padding-top:30px}.bar{background:#17191d;border-radius:8px 8px 0 0;position:relative;transition:.25s;min-height:15px}.bar:hover{background:var(--red)}.bar span{position:absolute;bottom:-28px;width:100%;text-align:center;font-size:10px}.bar i{position:absolute;top:-22px;width:100%;text-align:center;font-style:normal;font-size:10px;color:#777}
+.summary{background:#cf0a2c;color:white}.summary .section-head p{color:#ffd7de}.summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.summary-card{border:1px solid #ffffff38;border-radius:22px;padding:28px;min-height:220px}.summary-card span{font-size:11px;letter-spacing:.15em;color:#ffd0d8}.summary-card h3{font-size:25px}.summary-card p{line-height:1.75;color:#ffe4e8;font-size:14px}
+footer{background:#0d0e10;color:#777;padding:50px 0}.foot{display:flex;justify-content:space-between;gap:30px}.foot strong{color:white}.source-note{font-size:12px;max-width:700px;line-height:1.7}
+.reveal{opacity:0;transform:translateY(35px);transition:.75s}.reveal.show{opacity:1;transform:none}
+@media(max-width:800px){.navlinks a:not(:last-child){display:none}.hero-grid,.section-head,.insight{grid-template-columns:1fr}.hero-side{border:0;padding:0}.metrics{grid-template-columns:1fr 1fr}.theory-grid{grid-template-columns:1fr}.data-grid{grid-template-columns:1fr}.chart-card.wide{grid-column:auto}.case{grid-template-columns:1fr}.case-stats{border:0;padding:0}.summary-grid{grid-template-columns:1fr}.foot{display:block}.hero h1{font-size:58px}section{padding:80px 0}}
+</style></head>
+<body>
+<div class="progress"></div>
+<nav><div class="brand">HUAWEI <b>×</b> CREATIVE</div><div class="navlinks"><a href="#overview">概览</a><a href="#theory">理论</a><a href="#data">数据</a><a href="#cases">案例</a><a href="#conclusion">结论</a></div></nav>
+
+<header class="hero"><div class="wrap hero-grid">
+<div><div class="eyebrow">NEW MEDIA · BRAND COMMUNICATION · RESEARCH</div><h1>科技融合<br><span>多元创意</span></h1><p>华为创意广告分析——新媒体环境下的品牌传播策略研究。以 B 站视频数据与四个创意广告案例为核心，观察科技、情感、明星、场景与社交传播如何共同构成品牌影响力。</p><div class="scrollcue">SCROLL TO EXPLORE ↓</div></div>
+<div class="hero-side"><div class="eyebrow">DATASET</div><strong>878</strong><small>条 B 站“华为终端”相关视频广告<br>样本筛选：播放量 3w+</small></div>
+</div></header>
+
+<section id="overview"><div class="wrap reveal">
+<div class="section-head"><div><div class="eyebrow">01 / RESEARCH OVERVIEW</div><h2>研究<br>概览</h2></div><p>研究从视频时长、类别、关键词、发布时间与互动数据等维度切入，并结合四个代表性广告案例，分析华为如何在新媒体环境中实现科技表达与创意传播的结合。</p></div>
+<div class="metrics"><div class="metric"><div class="num">85.4%</div><div class="label">1–3 分钟视频占比<br>短时长成为主要内容形态</div></div><div class="metric"><div class="num">34.9%</div><div class="label">产品系列相关类别占比<br>为主要营销方向</div></div><div class="metric"><div class="num">143</div><div class="label">9 月发布视频数量<br>为全年最高月份</div></div><div class="metric"><div class="num">805.8w</div><div class="label">Mate 60 RS 案例播放量<br>四个案例中最高</div></div></div>
+</div></section>
+
+<section id="theory" class="theory"><div class="wrap reveal">
+<div class="section-head"><div><div class="eyebrow">02 / FRAMEWORK</div><h2>理论<br>框架</h2></div><p>报告采用五类营销传播理论解释广告内容、渠道协同、受众触达、社交扩散与品牌资产积累之间的关系。</p></div>
+<div class="theory-grid">
+<div class="theory-card"><b>01</b><h3>整合营销传播</h3><p>统一主题、形象与信息，通过广告、公关、社交平台等多渠道形成协同传播。</p></div>
+<div class="theory-card"><b>02</b><h3>体验营销</h3><p>关注消费者感官、情感、思考、行动与关联体验，以情境强化品牌感受。</p></div>
+<div class="theory-card"><b>03</b><h3>精准营销</h3><p>依据受众属性、兴趣与行为进行细分，实现更具针对性的内容触达。</p></div>
+<div class="theory-card"><b>04</b><h3>病毒式营销</h3><p>借助话题性、情感与社交分享形成二次扩散，扩大内容覆盖与品牌曝光。</p></div>
+<div class="theory-card"><b>05</b><h3>品牌资产</h3><p>从知名度、美誉度、忠诚度与品牌联想等维度观察传播价值的长期积累。</p></div>
+</div></div></section>
+
+<section id="data"><div class="wrap reveal">
+<div class="section-head"><div><div class="eyebrow">03 / DATA ANALYSIS</div><h2>数据<br>画像</h2></div><p>878 条样本显示，华为在 B 站的广告传播呈现“短时长、产品导向、节点集中、互动分层”的特征。</p></div>
+<div class="data-grid">
+<div class="chart-card"><h3>视频时长分布</h3><p>1–3 分钟占据绝对主体。</p><div class="chart-wrap"><canvas id="duration"></canvas></div></div>
+<div class="chart-card"><h3>视频类别</h3><p>产品系列相关内容占比最高。</p><div class="chart-wrap"><canvas id="category"></canvas></div></div>
+<div class="chart-card wide"><h3>全年发布节奏</h3><p>9 月达到全年峰值，第三、第四季度发布较集中。</p><div class="timeline" id="months"></div></div>
+<div class="chart-card"><h3>播放量分布</h3><p>多数视频播放量低于 10 万。</p><div class="chart-wrap"><canvas id="views"></canvas></div></div>
+<div class="chart-card"><h3>评论量分布</h3><p>10–999 条评论构成主体。</p><div class="chart-wrap"><canvas id="comments"></canvas></div></div>
+</div>
+<div class="insight"><b>Q3</b><p>第三季度发布 271 条，占 30.9%；第四季度 264 条，占 30.1%。报告认为，这种集中度可能与新品发布和消费电子销售旺季的推广节奏有关。</p></div>
+</div></section>
+
+<section id="cases" class="cases"><div class="wrap reveal">
+<div class="section-head"><div><div class="eyebrow">04 / CASE STUDIES</div><h2>四个<br>创意案例</h2></div><p>四个案例分别体现明星效应、动作叙事、情感体验与地域文化等不同创意路径，同时共同指向跨平台传播与品牌资产强化。</p></div>
+<div class="case-list">
+<article class="case"><div class="case-no">01</div><div><h3>Mate 60 RS 非凡大师</h3><p>刘德华以“不是天生非凡，而是敢于非凡”强化产品精神内核，多渠道传播叠加明星效应，将高端产品定位与人物价值表达结合。</p><div class="tags"><span class="tag">明星效应</span><span class="tag">整合营销</span><span class="tag">精准营销</span><span class="tag">病毒传播</span></div></div><div class="case-stats"><div class="eyebrow">VIDEO VIEWS</div><div class="views">805.8w</div></div></article>
+<article class="case"><div class="case-no">02</div><div><h3>Mate X5《锋行任务》</h3><p>谢霆锋化身神秘特工，通过动作片叙事把抗摔、通信与外观卖点融入剧情，并通过视频平台与社交平台形成内容联动。</p><div class="tags"><span class="tag">动作叙事</span><span class="tag">年轻群体</span><span class="tag">产品植入</span><span class="tag">社交扩散</span></div></div><div class="case-stats"><div class="eyebrow">VIDEO VIEWS</div><div class="views">558.6w</div></div></article>
+<article class="case"><div class="case-no">03</div><div><h3>FreeBuds Pro 3《想把我唱给你听》</h3><p>将音乐、科技与夫妻情感故事融合，让音质优势进入情感体验场景，通过共鸣强化产品认知与品牌美誉度。</p><div class="tags"><span class="tag">情感营销</span><span class="tag">体验营销</span><span class="tag">音乐</span><span class="tag">品牌资产</span></div></div><div class="case-stats"><div class="eyebrow">VIDEO VIEWS</div><div class="views">547.9w</div></div></article>
+<article class="case"><div class="case-no">04</div><div><h3>Mate 50《重返月球的 Mate》重庆话版</h3><p>重庆方言、幽默情节与产品“黑科技”结合，借地域文化降低技术理解门槛，并刺激讨论与二次传播。</p><div class="tags"><span class="tag">地域文化</span><span class="tag">幽默叙事</span><span class="tag">方言</span><span class="tag">病毒传播</span></div></div><div class="case-stats"><div class="eyebrow">VIDEO VIEWS</div><div class="views">203.5w</div></div></article>
+</div></div></section>
+
+<section id="conclusion" class="summary"><div class="wrap reveal">
+<div class="section-head"><div><div class="eyebrow" style="color:#ffd2da">05 / CONCLUSION</div><h2>传播策略<br>启示</h2></div><p>研究认为，华为的新媒体广告通过科技与创意融合，在故事化、互动化和情感化表达中强化了品牌传播效果。</p></div>
+<div class="summary-grid"><div class="summary-card"><span>01 / CONTENT</span><h3>技术卖点需要被“叙事化”</h3><p>功能不只作为参数出现，而是进入动作、音乐、幽默和生活场景，使受众更容易理解并形成记忆。</p></div><div class="summary-card"><span>02 / DISTRIBUTION</span><h3>多平台协同扩大传播半径</h3><p>视频平台承担主内容，社交媒体承接话题、切片与讨论，让一次广告形成更长的传播链路。</p></div><div class="summary-card"><span>03 / BRAND</span><h3>情感与创意沉淀品牌资产</h3><p>从“产品功能认知”延伸至“品牌形象与价值联想”，是创意广告从短期曝光走向长期品牌建设的关键。</p></div></div>
+</div></section>
+
+<footer><div class="wrap foot"><div><strong>科技融合多元创意</strong><br>华为创意广告分析</div><div class="source-note">网页内容依据用户提供的研究报告整理与可视化。数据口径、案例判断与理论解释均以原报告为准；网页仅对信息层级与视觉表达进行了重构。</div></div></footer>
+
+<script>
+const red='#cf0a2c', dark='#202228', gray='#d9d8d3';
+Chart.defaults.font.family='Inter, "Noto Sans SC", sans-serif'; Chart.defaults.color='#676a70';
+new Chart(document.getElementById('duration'),{type:'doughnut',data:{labels:['1–3min','4–6min','>10min','7–10min'],datasets:[{data:[750,89,20,19],backgroundColor:[red,dark,'#aaa','#ddd'],borderWidth:0}]},options:{maintainAspectRatio:false,cutout:'68%',plugins:{legend:{position:'bottom'}}}});
+new Chart(document.getElementById('category'),{type:'bar',data:{labels:['产品系列','场景用途','人物合作','设计外观','体验感受'],datasets:[{data:[34.9,14,9.3,20.9,20.9],backgroundColor:[red,dark,'#777','#aaa','#ccc'],borderRadius:6}]},options:{maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{display:false}}}}});
+new Chart(document.getElementById('views'),{type:'doughnut',data:{labels:['<10w','10–99w','100–999w'],datasets:[{data:[584,243,51],backgroundColor:[dark,red,'#aaa'],borderWidth:0}]},options:{maintainAspectRatio:false,cutout:'68%',plugins:{legend:{position:'bottom'}}}});
+new Chart(document.getElementById('comments'),{type:'bar',data:{labels:['<10','10–99','100–999','1000–4999','>5000'],datasets:[{data:[32,419,383,41,3],backgroundColor:[dark,red,'#555','#999','#ccc'],borderRadius:6}]},options:{maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{color:'#eee'}}}}});
+const m=[21,25,50,100,74,64,62,66,143,99,86,79], max=Math.max(...m), box=document.getElementById('months');
+m.forEach((v,i)=>{const d=document.createElement('div');d.className='bar';d.style.height=(v/max*210)+'px';d.innerHTML=`<i>${v}</i><span>${i+1}月</span>`;box.appendChild(d)});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.1});document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+addEventListener('scroll',()=>{const d=document.documentElement;document.querySelector('.progress').style.width=(scrollY/(d.scrollHeight-innerHeight)*100)+'%'});
+</script></body></html>
